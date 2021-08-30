@@ -16,10 +16,10 @@ public class UITools
         int depth = Math.max(bids.size(), asks.size());
 
         // TODO perhaps move towards a curses style implementation
-        System.out.printf("%3s%10s%10s %n", "Row", "Bid", "Ask");
+        System.out.printf("%3s%12s%12s %n", "Row", "Bid", "Ask");
         for (int i = 0; i < depth; i++)
         {
-            System.out.printf("%3s%10.2f%10.2f %n", i, bids.get(i), asks.get(i));
+            System.out.printf("%3s%12.4f%12.4f %n", i, bids.get(i), asks.get(i));
         }
     }
 }
