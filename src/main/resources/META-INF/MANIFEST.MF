@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
-Main-Class: com.welias.exchange.coinbase.app.CoinbasePriceBookFeed
+Main-Class: com.welias.exchange.coinbase.app.PriceBookFeed
 

@@ -3,14 +3,14 @@ package com.welias.exchange.coinbase.app.message;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class MessageFactory
+public class CoinbaseMessageFactory
 {
-    public static String getL2SubscribeMessage(String instrument)
+    public static String getL2SubscribeMessage(String... instruments)
     {
         JSONObject subscribeMessage = new JSONObject();
         subscribeMessage.put("type", "subscribe");
 
-        JSONArray products = buildProductsList(instrument);
+        JSONArray products = buildProductsList(instruments);
         subscribeMessage.put("product_ids", products);
         subscribeMessage.put("channels", buildChannelsList(products));
 
@@ -30,10 +30,13 @@ public class MessageFactory
         return channels;
     }
 
-    private static JSONArray buildProductsList(String instrument)
+    private static JSONArray buildProductsList(String... instruments)
     {
         JSONArray products = new JSONArray();
-        products.put(instrument);
+        for (String instrument : instruments)
+        {
+            products.put(instrument);
+        }
         return products;
     }
 }

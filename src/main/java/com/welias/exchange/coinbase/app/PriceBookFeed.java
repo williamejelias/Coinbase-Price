@@ -4,7 +4,7 @@ import com.welias.exchange.coinbase.app.websocket.CoinbaseWebSocketClient;
 
 import java.util.concurrent.CountDownLatch;
 
-public class CoinbasePriceBookFeed
+public class PriceBookFeed
 {
     public static void main(String[] args)
     {

@@ -1,5 +1,7 @@
 package com.welias.exchange.coinbase.app.websocket;
 
+import com.welias.exchange.coinbase.app.message.MessageDecoder;
+
 import javax.websocket.ClientEndpoint;
 import javax.websocket.ContainerProvider;
 import javax.websocket.DeploymentException;
@@ -43,7 +45,7 @@ public class WebSocketEndpoint
     @OnMessage
     public void onMessage(Session session, String message)
     {
-        mMessageHandler.handleMessage(message);
+        mMessageHandler.handleMessage(MessageDecoder.decodeMessage(message));
     }
 
     @OnClose
