@@ -17,12 +17,11 @@ public class CoinbasePriceBookFeed
         try
         {
             doneSignal.await();
+            System.out.println("Exiting...");
             webSocketClient.close();
         }
         catch (InterruptedException ignored)
         {
         }
-
-        System.out.println("Exiting...");
     }
 }
