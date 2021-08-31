@@ -5,6 +5,7 @@ import org.json.JSONObject;
 
 public class CoinbaseMessageFactory
 {
+    // TODO consider using GSON library to handle automatic encoding and decoding of internal/external API objects
     public static String getL2SubscribeMessage(String... instruments)
     {
         JSONObject subscribeMessage = new JSONObject();

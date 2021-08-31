@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -24,8 +25,8 @@ public class PriceBook
     }
 
     /**
-     * Update order book given a list of (price, size) combos.
-     * Note: As per CoinbasePro API - a size 0 means removal.
+     * Update order book for a given list of (rate, size) pairs.
+     * Note: CoinbasePro API - 0 size means remove price.
      */
     public void applyUpdate(PriceBookUpdate priceBookUpdate)
     {
@@ -88,5 +89,29 @@ public class PriceBook
             }
         }
         return result;
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PriceBook priceBook = (PriceBook) o;
+        return Objects.equals(mSizeToBid, priceBook.mSizeToBid) && Objects.equals(mSizeToAsk, priceBook.mSizeToAsk);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(mSizeToBid, mSizeToAsk);
+    }
+
+    @Override
+    public String toString()
+    {
+        return "PriceBook{" +
+                "mSizeToBid=" + mSizeToBid +
+                ", mSizeToAsk=" + mSizeToAsk +
+                '}';
     }
 }

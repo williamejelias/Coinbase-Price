@@ -16,6 +16,7 @@ import java.util.Map;
 
 public class PayloadAdapter
 {
+    // TODO consider using GSON library to handle automatic encoding and decoding of internal/external API objects
     public static PriceBook fromSnapshot(JSONObject snapshot)
     {
         if (snapshot == null || snapshot.isEmpty())
