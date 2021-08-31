@@ -5,7 +5,7 @@ The application utilises the [CoinbasePro Websocket API](https://docs.pro.coinba
 
 To run the application:
 ```
-java -jar Coinbase-Price.jar <instrument>
+java -jar Coinbase-Price.jar -i <instrument>
 ```
 where <instrument> is the instrument listed on the Coinbase exchange that you wish to receive live pricing for.
 
