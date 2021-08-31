@@ -1,6 +1,5 @@
 package com.welias.exchange.coinbase.app.websocket;
 
-import com.welias.exchange.coinbase.app.UITools;
 import com.welias.exchange.coinbase.app.api.external.UpdateTypeEnum;
 import com.welias.exchange.coinbase.app.api.internal.PayloadAdapter;
 import com.welias.exchange.coinbase.app.message.CoinbaseMessageFactory;
@@ -12,13 +11,18 @@ import javax.websocket.DeploymentException;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Collections;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class CoinbaseWebSocketClient
 {
     public static final String COINBASE_WS_URI = "wss://ws-feed.pro.coinbase.com/";
 
-    WebSocketEndpoint mWebSocketEndpoint;
-    PriceBook mPriceBook;
+    private final Set<PriceBookUpdateListener> mUpdateListeners = Collections.newSetFromMap(new ConcurrentHashMap<>());
+
+    private WebSocketEndpoint mWebSocketEndpoint;
+    private PriceBook mPriceBook;
 
     public void subscribe(String instrument)
     {
@@ -64,7 +68,7 @@ public class CoinbaseWebSocketClient
     private void handleSnapshot(JSONObject response)
     {
         mPriceBook = PayloadAdapter.fromSnapshot(response);
-        UITools.render(mPriceBook);
+        mUpdateListeners.forEach(mUpdateListener -> mUpdateListener.handleUpdate(mPriceBook));
     }
 
     private void handleL2Update(JSONObject response)
@@ -72,7 +76,7 @@ public class CoinbaseWebSocketClient
         PriceBookUpdate orderBookUpdate = PayloadAdapter.fromL2Update(response);
         if (mPriceBook != null) {
             mPriceBook.applyUpdate(orderBookUpdate);
-            UITools.render(mPriceBook);
+            mUpdateListeners.forEach(mUpdateListener -> mUpdateListener.handleUpdate(mPriceBook));
         }
     }
 
@@ -80,6 +84,16 @@ public class CoinbaseWebSocketClient
     {
         System.out.println(response.get("message") + ". " + response.get("reason") + ".");
         System.exit(0);
+    }
+
+    public void registerListener(PriceBookUpdateListener listener)
+    {
+        mUpdateListeners.add(listener);
+    }
+
+    public void deregisterListener(PriceBookUpdateListener listener)
+    {
+        mUpdateListeners.remove(listener);
     }
 
     public void close()

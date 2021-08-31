@@ -34,10 +34,11 @@ public class PriceBook
         {
             if (bid.getSize().signum() == 0)
             {
-                mSizeToBid.remove(bid.getPrice());
-            } else
+                mSizeToBid.remove(bid.getRate());
+            }
+            else
             {
-                mSizeToBid.put(bid.getPrice(), bid.getSize());
+                mSizeToBid.put(bid.getRate(), bid.getSize());
             }
         }
 
@@ -46,10 +47,11 @@ public class PriceBook
         {
             if (ask.getSize().signum() == 0)
             {
-                mSizeToAsk.remove(ask.getPrice());
-            } else
+                mSizeToAsk.remove(ask.getRate());
+            }
+            else
             {
-                mSizeToAsk.put(ask.getPrice(), ask.getSize());
+                mSizeToAsk.put(ask.getRate(), ask.getSize());
             }
         }
     }
@@ -64,7 +66,9 @@ public class PriceBook
             result.add(iterator.next());
             count++;
             if (count >= numberOfLevels)
+            {
                 break;
+            }
         }
         return result;
     }
@@ -79,7 +83,9 @@ public class PriceBook
             result.add(iterator.next());
             count++;
             if (count >= numberOfLevels)
+            {
                 break;
+            }
         }
         return result;
     }

@@ -4,20 +4,20 @@ import java.math.BigDecimal;
 
 public class Price
 {
-    private final BigDecimal mPrice;
+    private final BigDecimal mRate;
     private final BigDecimal mSize;
 
     public Price(
-            BigDecimal pricePar,
-            BigDecimal sizePar)
+            BigDecimal rate,
+            BigDecimal size)
     {
-        mPrice = pricePar;
-        mSize = sizePar;
+        mRate = rate;
+        mSize = size;
     }
 
-    public BigDecimal getPrice()
+    public BigDecimal getRate()
     {
-        return mPrice;
+        return mRate;
     }
 
     public BigDecimal getSize()
