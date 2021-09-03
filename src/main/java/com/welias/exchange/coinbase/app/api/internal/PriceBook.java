@@ -1,4 +1,4 @@
-package com.welias.exchange.coinbase.app.model;
+package com.welias.exchange.coinbase.app.api.internal;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

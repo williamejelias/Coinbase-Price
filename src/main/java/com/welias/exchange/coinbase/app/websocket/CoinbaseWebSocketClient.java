@@ -1,10 +1,10 @@
 package com.welias.exchange.coinbase.app.websocket;
 
 import com.welias.exchange.coinbase.app.api.external.UpdateTypeEnum;
-import com.welias.exchange.coinbase.app.api.internal.PayloadAdapter;
+import com.welias.exchange.coinbase.app.api.PayloadAdapter;
 import com.welias.exchange.coinbase.app.message.CoinbaseMessageFactory;
-import com.welias.exchange.coinbase.app.model.PriceBook;
-import com.welias.exchange.coinbase.app.model.PriceBookUpdate;
+import com.welias.exchange.coinbase.app.api.internal.PriceBook;
+import com.welias.exchange.coinbase.app.api.internal.PriceBookUpdate;
 import org.json.JSONObject;
 
 import javax.websocket.DeploymentException;

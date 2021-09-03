@@ -1,10 +1,10 @@
-package com.welias.exchange.coinbase.app.api.internal;
+package com.welias.exchange.coinbase.app.api;
 
-import com.welias.exchange.coinbase.app.api.PayloadConstants;
+import com.welias.exchange.coinbase.app.api.external.PayloadConstants;
 import com.welias.exchange.coinbase.app.api.external.SideEnum;
-import com.welias.exchange.coinbase.app.model.Price;
-import com.welias.exchange.coinbase.app.model.PriceBook;
-import com.welias.exchange.coinbase.app.model.PriceBookUpdate;
+import com.welias.exchange.coinbase.app.api.internal.Price;
+import com.welias.exchange.coinbase.app.api.internal.PriceBook;
+import com.welias.exchange.coinbase.app.api.internal.PriceBookUpdate;
 import org.json.JSONArray;
 import org.json.JSONObject;
 

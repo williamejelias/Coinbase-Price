@@ -1,4 +1,4 @@
-package com.welias.exchange.coinbase.app.model;
+package com.welias.exchange.coinbase.app.api.internal;
 
 import java.util.List;
 import java.util.Objects;

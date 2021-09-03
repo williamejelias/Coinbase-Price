@@ -1,6 +1,6 @@
 package com.welias.exchange.coinbase.app.ui;
 
-import com.welias.exchange.coinbase.app.model.PriceBook;
+import com.welias.exchange.coinbase.app.api.internal.PriceBook;
 import com.welias.exchange.coinbase.app.websocket.PriceBookUpdateListener;
 
 import java.math.BigDecimal;

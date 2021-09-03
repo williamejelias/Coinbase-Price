@@ -1,4 +1,4 @@
-package com.welias.exchange.coinbase.app.api;
+package com.welias.exchange.coinbase.app.api.external;
 
 public class PayloadConstants
 {
